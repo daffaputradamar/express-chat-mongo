@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
+const path = require("path")
 
 const Chat = require("./models/Chat");
 
@@ -8,6 +9,8 @@ require("./config/db");
 
 const app = express();
 var server = http.createServer(app);
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 let io = socketio(server);
 
